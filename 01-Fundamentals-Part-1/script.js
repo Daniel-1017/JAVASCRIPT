@@ -131,3 +131,6 @@ switch (day) {
   default:
     console.log("Not a valid day")
 }
+
+// CONDITIONAL (TERNARY) OPERATOR
+age >= 18 ? console.log("MORE THAN 18") : console.log("LESS THAN 18")
