@@ -75,3 +75,19 @@ console.log("Hello I'm " + 20 + " year old.")
 console.log("10" - "5" - 5)
 console.log("2" * "4")
 console.log("8" / "4")
+
+// TRUTHY & FALSY
+// falsy values: 0, "", undefined, null, NaN
+console.log(Boolean(0))
+console.log(Boolean(""))
+console.log(Boolean(undefined))
+console.log(Boolean(null))
+console.log(Boolean(NaN))
+
+const money = 100
+
+if (money) {
+  console.log("Don't spend it all.")
+} else {
+  console.log("You should get a job.")
+}
