@@ -7,7 +7,7 @@ let _undefined
 
 // let, const & var
 let age = 10 // variable that can be mutated
-age = 11
+age = 18
 
 const birthYear = 2000 // variable that can't be mutated
 // birthYear = 2001 WRONG
@@ -90,4 +90,15 @@ if (money) {
   console.log("Don't spend it all.")
 } else {
   console.log("You should get a job.")
+}
+
+// == & ===
+// == loose equality operator -> perform type coercion
+// === strict equality operator -> does not perform type coercion
+if (age === 18) {
+  console.log("You just became an adult.")
+}
+
+if (age == "18") {
+  console.log("You just became an adult.")
 }
