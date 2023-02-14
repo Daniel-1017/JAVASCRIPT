@@ -38,3 +38,11 @@ console.log(x)
 // comparison operators
 console.log(ageJonas > ageSara, ageJonas < ageSara)
 console.log(ageJonas >= 18)
+
+// STRINGS
+const jonas = "I'm " + firstName + ", a " + ageJonas + " year old teacher"
+
+const fullname = "Sara Fusco"
+// template literals
+const sara = `I'm ${fullname}, a ${ageSara} year old teacher.`
+console.log(sara)
