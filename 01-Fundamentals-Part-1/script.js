@@ -46,3 +46,18 @@ const fullname = "Sara Fusco"
 // template literals
 const sara = `I'm ${fullname}, a ${ageSara} year old teacher.`
 console.log(sara)
+
+// if & else
+const ageToDrive = 18
+const ageMara = 15
+const isOldEnough = ageMara >= ageToDrive
+
+if (isOldEnough) {
+  console.log("Mara can start driving license. 🚗")
+} else {
+  const yearsLeft = ageToDrive - ageMara
+  console.log(
+    "Mara can't start driving license. 🚗",
+    `Wait ${yearsLeft} more years.`
+  )
+}
