@@ -61,3 +61,17 @@ if (isOldEnough) {
     `Wait ${yearsLeft} more years.`
   )
 }
+
+// TYPE CONVERSION & TYPE COERCION
+
+// conversion
+const inputYear = "1991"
+console.log(Number(inputYear) + 9)
+console.log(String(10))
+console.log(Number("jonas")) // => NaN
+
+// coercion
+console.log("Hello I'm " + 20 + " year old.")
+console.log("10" - "5" - 5)
+console.log("2" * "4")
+console.log("8" / "4")
