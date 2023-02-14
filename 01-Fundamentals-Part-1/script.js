@@ -102,3 +102,10 @@ if (age === 18) {
 if (age == "18") {
   console.log("You just became an adult.")
 }
+
+// LOGICAL OPERATORS
+const a = true
+const b = false
+
+console.log(a && b)
+console.log(a || b)
