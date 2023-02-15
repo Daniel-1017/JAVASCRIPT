@@ -146,3 +146,10 @@ console.log(jay.calcAge())
 console.log(jay.age)
 console.log(jay.age)
 console.log(jay.age)
+
+// LOOPS
+// for loop
+console.log("LOOPS - for loop")
+for (let rep = 1; rep <= 10; rep++) {
+  console.log(`Lifting weights rep ${rep} 🏋️‍♂️`)
+}
