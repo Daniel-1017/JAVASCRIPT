@@ -15,11 +15,11 @@ function logger() {
 // calling / running / invoking function
 // logger()
 
-function fruitProcessor(apples, oranges) {
-  // apples and oranges are parameters
-  const juice = `Juice with ${apples} apples and ${oranges} oranges.`
-  return juice
-}
+// function fruitProcessor(apples, oranges) {
+//   -- apples and oranges are parameters --
+//   const juice = `Juice with ${apples} apples and ${oranges} oranges.`
+//   return juice
+// }
 
 // 5 and 0 are arguments
 const appleJuice = fruitProcessor(5, 0)
@@ -41,4 +41,22 @@ const calcAge2 = function (birthYear) {
 }
 
 const age2 = calcAge2(2000)
-console.log(age1, age2)
+
+// ARROW FN
+const calcAge3 = birthYear => 2037 - birthYear
+const age3 = calcAge3(2016)
+console.log(age3)
+
+function cutFruitPieces(fruit) {
+  return fruit * 4
+}
+
+function fruitProcessor(apples, oranges) {
+  const applePeaces = cutFruitPieces(apples)
+  const orangePeaces = cutFruitPieces(oranges)
+
+  const juice = `Juice with ${applePeaces} peaces of apples and ${orangePeaces} peaces of oranges.`
+  return juice
+}
+
+console.log(fruitProcessor(2, 3))
