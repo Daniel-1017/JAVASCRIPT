@@ -64,7 +64,6 @@ console.log(fruitProcessor(2, 3))
 
 // ARRAYS
 const friends = ["Michael", "Steven", "Peter"]
-console.log(friends)
 
 const years = new Array(1990, 1991, 1992)
 
@@ -73,8 +72,24 @@ console.log(friends.length)
 console.log(friends[friends.length - 1])
 
 friends[2] = "Jay"
-console.log(friends)
 
 const lastName = "Frimu"
 const daniel = ["Daniel", lastName, 17, "student", friends]
 console.log(daniel)
+
+// METHODS
+// add elements
+friends.push("Angela") // returns array length
+friends.unshift("John") // returns array length
+console.log(friends)
+
+// remove elements
+friends.pop() // returns deleted element
+friends.shift() // returns deleted element
+
+friends.indexOf("Michael") // return idx if el. is present
+friends.indexOf("Bob") // returns -1 if el. isn't present
+friends.includes("Bob") // boolean
+
+console.log(friends.indexOf("Michael"))
+console.log(friends)
