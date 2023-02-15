@@ -1,25 +1,17 @@
 "use strict"
 
-let hasDriversLicense = false
-const passTest = true
-
-// if (passTest) hasLicense = true
-// if (hasDriversLicense) console.log("I can drive.")
-
-// const interface = "Audio"
-
 function logger() {
   console.log("My name is Jonas.")
 }
 
 // calling / running / invoking function
-// logger()
+logger()
 
-// function fruitProcessor(apples, oranges) {
-//   -- apples and oranges are parameters --
-//   const juice = `Juice with ${apples} apples and ${oranges} oranges.`
-//   return juice
-// }
+function fruitProcessor(apples, oranges) {
+  // apples and oranges are parameters
+  const juice = `Juice with ${apples} apples and ${oranges} oranges.`
+  return juice
+}
 
 // 5 and 0 are arguments
 const appleJuice = fruitProcessor(5, 0)
@@ -32,14 +24,12 @@ console.log(appleOrangeJuice)
 function calcAge1(birthYear) {
   return 2037 - birthYear
 }
-
 const age1 = calcAge1(1991)
 
 // FN EXPRESSION
 const calcAge2 = function (birthYear) {
   return 2037 - birthYear
 }
-
 const age2 = calcAge2(2000)
 
 // ARROW FN
@@ -152,4 +142,36 @@ console.log(jay.age)
 console.log("LOOPS - for loop")
 for (let rep = 1; rep <= 10; rep++) {
   console.log(`Lifting weights rep ${rep} 🏋️‍♂️`)
+}
+
+const danielsArray = [
+  "Daniel",
+  "Frimu",
+  2023 - 2005,
+  "student",
+  ["Michael", "Peter", "Steven"],
+  true,
+]
+
+const types = []
+
+for (let i = 0; i < danielsArray.length; i++) {
+  console.log(danielsArray[i], typeof danielsArray[i])
+
+  // filling types array
+  // types[i] = typeof danielsArray[i]
+  types.push(typeof danielsArray[i])
+}
+
+// continue & break
+console.log("--- ONLY STRING ---")
+for (let i = 0; i < danielsArray.length; i++) {
+  if (typeof danielsArray[i] !== "string") continue
+  console.log(danielsArray[i], typeof danielsArray[i])
+}
+
+console.log("--- BREACK WITH NUMBER ---")
+for (let i = 0; i < danielsArray.length; i++) {
+  if (typeof danielsArray[i] === "number") break
+  console.log(danielsArray[i], typeof danielsArray[i])
 }
