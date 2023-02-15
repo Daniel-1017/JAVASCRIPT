@@ -117,3 +117,32 @@ console.log(jonas["last" + nameKey])
 
 jonas.location = "Portugal"
 console.log(jonas)
+
+// FN AS PROPERTY
+const jay = {
+  firstName: "Jay",
+  lastName: "Dobrik",
+  birthYear: 1991,
+  job: "teacher",
+  friends,
+  hasDriversLicense: true,
+
+  // calcAge: function (birthYear) {
+  //   return 2037 - birthYear
+  // },
+
+  // calcAge: function () {
+  //   return 2037 - this.birthYear
+  // },
+
+  calcAge: function () {
+    this.age = 2037 - this.birthYear
+    return this.age
+  },
+}
+
+console.log(jay.calcAge())
+
+console.log(jay.age)
+console.log(jay.age)
+console.log(jay.age)
