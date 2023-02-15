@@ -175,3 +175,16 @@ for (let i = 0; i < danielsArray.length; i++) {
   if (typeof danielsArray[i] === "number") break
   console.log(danielsArray[i], typeof danielsArray[i])
 }
+
+// looping backwards
+for (let i = danielsArray.length - 1; i >= 0; i--) {
+  console.log(i, danielsArray[i])
+}
+
+// loops in loops
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`--- Starting exercise ${exercise} ---`)
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`--- Lifting weight rep ${rep} 🏋️‍♂️ ---`)
+  }
+}
