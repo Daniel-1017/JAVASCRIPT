@@ -93,3 +93,17 @@ friends.includes("Bob") // boolean
 
 console.log(friends.indexOf("Michael"))
 console.log(friends)
+
+// OBJECTS
+// object literal syntax
+const jonas = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  age: 2037 - 1991,
+  job: "teacher",
+  friends,
+}
+
+// on the left properties on the right values
+
+console.log(jonas)
