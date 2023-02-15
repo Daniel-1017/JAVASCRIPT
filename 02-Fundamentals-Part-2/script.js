@@ -47,6 +47,7 @@ const calcAge3 = birthYear => 2037 - birthYear
 const age3 = calcAge3(2016)
 console.log(age3)
 
+// FN CALLING OTHER FN
 function cutFruitPieces(fruit) {
   return fruit * 4
 }
@@ -60,3 +61,20 @@ function fruitProcessor(apples, oranges) {
 }
 
 console.log(fruitProcessor(2, 3))
+
+// ARRAYS
+const friends = ["Michael", "Steven", "Peter"]
+console.log(friends)
+
+const years = new Array(1990, 1991, 1992)
+
+console.log(friends[0])
+console.log(friends.length)
+console.log(friends[friends.length - 1])
+
+friends[2] = "Jay"
+console.log(friends)
+
+const lastName = "Frimu"
+const daniel = ["Daniel", lastName, 17, "student", friends]
+console.log(daniel)
