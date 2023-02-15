@@ -106,4 +106,14 @@ const jonas = {
 
 // on the left properties on the right values
 
+console.log(jonas.firstName)
+console.log(jonas["lastName"])
+
+const nameKey = "Name"
+
+console.log(jonas["first" + nameKey])
+console.log(jonas["last" + nameKey])
+// console.log(jonas.'last' + nameKey); WRONG
+
+jonas.location = "Portugal"
 console.log(jonas)
