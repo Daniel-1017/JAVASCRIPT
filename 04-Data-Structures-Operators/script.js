@@ -186,3 +186,28 @@ add(...x)
 
 restaurant.orderPizza("mushrooms", "onion", "olives")
 restaurant.orderPizza("mushrooms")
+
+console.log("--- || ---")
+// Can use logical operators for
+// Short circuiting / Short circuit evaluation
+console.log(3 || "Daniel")
+console.log("" || "Daniel")
+
+// restaurant.guests = 23
+const guests = restaurant.guests || 10
+console.log(guests)
+
+console.log("--- && ---")
+console.log(1 && "Jonas")
+console.log(0 && "Jonas")
+
+// Practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("mushrooms", "spinach")
+}
+
+restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach")
+
+// || operator will return the first truthy value or the last one in case they are all false
+
+// && will return the first falsy value or the last one in case they are all true
