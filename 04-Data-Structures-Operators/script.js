@@ -41,6 +41,10 @@ const restaurant = {
       `Order recived! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     )
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(ing1, ing2, ing3)
+  },
 }
 
 restaurant.orderDelivery({
@@ -102,3 +106,42 @@ console.log(i, j, k)
 // Default values
 const [p = 1, q = 1, r = 1] = [8, 9]
 console.log(p, q, r)
+
+// ... spread operators
+const arr = [7, 8, 9]
+const goodNewArr = [1, 2, 3, ...arr]
+console.log(goodNewArr)
+console.log(...arr)
+
+const newMenu = [...restaurant.mainMenu, "Gnocchi"]
+console.log(newMenu)
+
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu]
+
+// Join 2 array
+const mergedMenues = [...restaurant.mainMenu, ...restaurant.starterMenu]
+
+// Iterables: arrays, strings, maps, sets. NOT objects
+
+// Real world example
+const str = "Jonas"
+const letters = [...str, " ", "S."]
+console.log(letters)
+
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 1?"),
+//   prompt("Let's make pasta! Ingredient 2?"),
+//   prompt("Let's make pasta! Ingredient 3?"),
+// ]
+
+// restaurant.orderPasta(...ingredients)
+
+// Objects
+const newRestaurant = { ...restaurant, founder: "Giuseppe." }
+console.log(newRestaurant)
+
+const restaurantCopy = { ...restaurant }
+restaurant.name = "Ristorante Roma"
+console.log(restaurantCopy.name)
+console.log(restaurant.name)
