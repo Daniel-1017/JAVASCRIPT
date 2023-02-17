@@ -217,3 +217,29 @@ restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach")
 restaurant.guests = 0
 const guests2 = restaurant.guests ?? 10
 console.log(guests2)
+
+// Logical assignment operators
+const rest1 = {
+  name: "Capri",
+  guests: 0,
+}
+
+const rest2 = {
+  name: "La Piazza",
+  owner: "Giovanni Rossi",
+}
+
+// OR assignment operator
+rest1.guests ||= 10
+rest2.guests ||= 10
+
+// ?? or nullish assignment operator (null or undefined)
+rest1.guests ??= 10
+rest2.guests ??= 10
+
+// && assignment operator
+rest1.owner &&= "ANONIMUS"
+rest2.owner &&= "ANONIMUS"
+
+console.log(rest1)
+console.log(rest2)
