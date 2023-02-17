@@ -45,6 +45,10 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(ing1, ing2, ing3)
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient, otherIngredients)
+  },
 }
 
 restaurant.orderDelivery({
@@ -145,3 +149,40 @@ const restaurantCopy = { ...restaurant }
 restaurant.name = "Ristorante Roma"
 console.log(restaurantCopy.name)
 console.log(restaurant.name)
+
+// 1) Destructuring
+
+// SPREAD, because on RIGHT side of =
+const arr2 = [1, 2, ...[3, 4]]
+
+// REST, because on LEFT side of =
+const [g, h, ...others] = [1, 2, 3, 4, 5, 6]
+console.log(g, h, others)
+
+// REST must always be the last
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+]
+console.log(pizza, risotto, otherFood)
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours
+console.log(sat, weekdays)
+
+// 2) Functions
+const add = function (...numbers) {
+  let sum = numbers.reduce((a, b) => a + b, 0)
+  console.log(sum)
+}
+
+add(2, 3)
+add(2, 3, 5, 6, 7, 2)
+
+const x = [21, 5, 6]
+add(...x)
+
+// With the SPREAD we expand, with the REST we compress
+
+restaurant.orderPizza("mushrooms", "onion", "olives")
+restaurant.orderPizza("mushrooms")
