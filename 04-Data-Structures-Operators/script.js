@@ -211,3 +211,9 @@ restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach")
 // || operator will return the first truthy value or the last one in case they are all false
 
 // && will return the first falsy value or the last one in case they are all true
+
+// Nullish coalescing operator
+// Works with null & undefined (NOT 0 or "")
+restaurant.guests = 0
+const guests2 = restaurant.guests ?? 10
+console.log(guests2)
