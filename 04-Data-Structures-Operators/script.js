@@ -447,3 +447,21 @@ for (const player of Object.values(game.scored)) {
   scores[player] ? scores[player]++ : (scores[player] = 1)
 }
 console.log(scores)
+
+// Sets and Maps
+const ordersSet = new Set(["pasta", "pizza", "pasta", "risotto", "pizza"])
+console.log(ordersSet)
+console.log(ordersSet.size)
+console.log(ordersSet.has("pizza"))
+console.log(ordersSet.has("bread"))
+ordersSet.add("garlic bread")
+ordersSet.add("garlic bread")
+ordersSet.delete("risotto")
+// ordersSet.clear()
+console.log(ordersSet)
+
+for (const order of ordersSet) console.log(order)
+
+// Example
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"]
+const staffUnique = [...new Set(staff)]
