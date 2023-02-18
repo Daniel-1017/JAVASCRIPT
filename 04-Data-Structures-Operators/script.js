@@ -452,3 +452,30 @@ console.log(rest.get(key))
 const time = 21
 console.log(rest.get(time > rest.get("open") && time < rest.get("close")))
 console.log(rest)
+
+const question = new Map([
+  ["question", "What is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "Correct 🎉"],
+  [false, "Try again!"],
+])
+
+// Convert object to map
+const hoursMap = new Map(Object.entries(openingHours))
+
+// Convert Map to array
+const mapArray = [...question]
+
+// Loop over a map
+//Quiz app
+console.log(question.get("question"))
+for (const [key, val] of question) {
+  if (typeof key === "number") console.log(`Answer ${key}: ${val}`)
+}
+// const answer = Number(prompt("Your answer"))
+
+// if (answer === question.get("correct")) console.log(question.get(true))
+// else console.log(question.get(false))
