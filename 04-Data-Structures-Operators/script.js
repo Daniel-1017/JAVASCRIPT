@@ -381,49 +381,6 @@ for (const [day, { open, close }] of entries) {
 
 // Coding challenge #2
 
-/* 
-const game = {
-  team1: "Bayern Munich",
-  team2: "Borrussia Dortmund",
-  players: [
-    [
-      "Neuer",
-      "Pavard",
-      "Martinez",
-      "Alaba",
-      "Davies",
-      "Kimmich",
-      "Goretzka",
-      "Coman",
-      "Muller",
-      "Gnarby",
-      "Lewandowski",
-    ],
-    [
-      "Burki",
-      "Schulz",
-      "Hummels",
-      "Akanji",
-      "Hakimi",
-      "Weigl",
-      "Witsel",
-      "Hazard",
-      "Brandt",
-      "Sancho",
-      "Gotze",
-    ],
-  ],
-  score: "4:0",
-  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
-  date: "Nov 9th, 2037",
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-}
-*/
-
 // 1.
 for (const [goal, player] of game.scored.entries()) {
   console.log(`Goal ${+goal + 1}, ${player}`)
@@ -449,6 +406,8 @@ for (const player of Object.values(game.scored)) {
 console.log(scores)
 
 // Sets and Maps
+
+// Sets are great for working with unique and unordered values
 const ordersSet = new Set(["pasta", "pizza", "pasta", "risotto", "pizza"])
 console.log(ordersSet)
 console.log(ordersSet.size)
@@ -465,3 +424,31 @@ for (const order of ordersSet) console.log(order)
 // Example
 const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"]
 const staffUnique = [...new Set(staff)]
+
+// Map
+
+// Is a data structure we can use to bind value to any kind of keys (objects, arrays, strings, numbers)
+const rest = new Map()
+rest.set("name", "Classico Italiano")
+rest.set(1, "Firenze, Italy")
+rest.set(2, "Tokyo, Japan")
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are opened")
+  .set(false, "We are closed")
+rest.get("name")
+rest.has("categories")
+rest.delete(2)
+rest.set(document.querySelector("h1"), "Heading")
+console.log(rest.size)
+// rest.clear()
+
+const key = [1, 2]
+rest.set(key, "Test")
+console.log(rest.get(key))
+
+const time = 21
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")))
+console.log(rest)
