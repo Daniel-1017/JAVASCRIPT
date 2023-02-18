@@ -8,7 +8,7 @@ const flights =
 const week = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
 
 const openingHours = {
-  [week[3]]: {
+  [week[0]]: {
     open: 12,
     close: 22,
   },
@@ -62,6 +62,32 @@ restaurant.orderDelivery({
   address: "Via del Sole, 21",
   starterIndex: 1,
 })
+
+// Old way
+if (restaurant.openingHours && restaurant.openingHours.tue) {
+  console.log(restaurant.openingHours.tue.open)
+}
+// Optional chaining
+console.log(restaurant.openingHours?.tue?.open)
+
+// Example
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+
+for (let day of days) {
+  console.log(day)
+  const open = restaurant.openingHours[day]?.open ?? "closed"
+  console.log(open)
+}
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? "Method does not exist.")
+console.log(restaurant.orderRisotto?.(0, 1) ?? "Method does not exist.")
+
+// Arrays
+const users = [{ name: "Jonas", email: "test@test.com" }]
+console.log(users[0]?.name ?? "User array empty.")
+
+// ---
 
 // Destructuring Objects
 const { name, openingHours: opHours, categories } = restaurant
