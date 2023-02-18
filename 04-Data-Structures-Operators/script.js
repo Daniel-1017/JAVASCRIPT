@@ -244,6 +244,16 @@ rest2.owner &&= "ANONIMUS"
 console.log(rest1)
 console.log(rest2)
 
+// for of loop
+const fullMenu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+
+for (const item of fullMenu) console.log(item)
+
+// get index in for of loop
+for (let [i, item] of fullMenu.entries()) {
+  console.log(`${i + 1}: ${item}`)
+}
+
 // Coding chanllenge #1
 const game = {
   team1: "Bayern Munich",
