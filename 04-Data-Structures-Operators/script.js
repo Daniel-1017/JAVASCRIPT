@@ -356,3 +356,25 @@ printGoals(...game.scored)
 // 7.
 team1 < team2 && console.log("Team 1 is more likely to win.")
 team1 > team2 && console.log("Team 1 is more likely to win.")
+
+// Looping over objects
+
+// Property names
+const properties = Object.keys(openingHours)
+let openStr = `We are opened ${properties.length} days: `
+
+for (const day of properties) {
+  openStr += `${day}`
+  console.log(openStr)
+}
+
+// Property values
+const values = Object.values(openingHours)
+console.log("🚀 ~ file: script.js:373 ~ values", values)
+
+const entries = Object.entries(openingHours)
+console.log("🚀 ~ file: script.js:376 ~ entries", entries)
+
+for (const [day, { open, close }] of entries) {
+  console.log(`On ${day} we open ad ${open} and close at ${close}`)
+}
