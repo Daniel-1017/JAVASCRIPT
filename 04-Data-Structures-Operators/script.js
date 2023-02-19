@@ -531,3 +531,36 @@ checkMiddleSet("3E")
 // JS behind the scenes will convert the string into an object with the same content and with all the methods available. This is called BOXING.
 
 // ex: "11B" -> new String("11B") all the methods are available on the prototype, when the operation is done, the object is converted into a regular string primitive
+
+console.log(airline.toLowerCase())
+console.log(airline.toUpperCase())
+
+// Comparing email
+const email = "test@test.com"
+const loginEmail = "   TEST@TEst.com \n"
+const normalizedEmail = loginEmail.toLowerCase().trim()
+
+// Replacing
+const priceGB = "288,97&"
+const priceUS = priceGB.replace("&", "$").replace(",", ".")
+
+const announcement =
+  "All passengers come to boarding door 23. Boarding door 23!"
+
+console.log(announcement.replace("door", "gate"))
+console.log(announcement.replaceAll("door", "gate"))
+console.log(announcement.replace(/door/g, "gate"))
+
+// Booleans
+const plane2 = "Airbus A320neo"
+console.log(plane2.includes("A320"))
+console.log(plane2.includes("Boeing"))
+console.log(plane2.startsWith("A"))
+
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase()
+
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("You are not allowed on board.")
+  }
+}
