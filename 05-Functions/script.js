@@ -222,18 +222,6 @@ const poll = {
       console.log(`Poll results are ${this.answers.join(", ")}`)
     }
   },
-
-  //   displayResults(type = []) {
-  //     if (typeof type === "string") {
-  //       const res = []
-  //       for (let i of this.options) {
-  //         res.push(i[0])
-  //       }
-  //       console.log(`Poll results are ${res.join(", ")}`)
-  //     } else {
-  //       console.log(this.options)
-  //     }
-  //   },
 }
 
 document
@@ -241,3 +229,8 @@ document
   .addEventListener("click", poll.registerNewAnswer.bind(poll))
 
 poll.displayResults.call({ answers: [5, 2, 3] }, "string")
+
+;// IIFE (Immediately Invoked Function Expressions)
+(function () {
+  console.log("This will never run again.")
+})()
