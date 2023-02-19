@@ -192,3 +192,52 @@ const addTaxRate = rate => {
 const addVAT2 = addTaxRate(0.23)
 console.log(addVAT2(100))
 console.log(addVAT2(23))
+
+// Coding challenge
+const poll = {
+  question: "What is you favourite programming language?",
+  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    // Get answer
+    const answer = Number(
+      prompt(
+        `${this.question}\n${this.options.join("\n")}\n(Write option number)`
+      )
+    )
+    console.log(answer)
+
+    // Register answer
+    typeof answer === "number" &&
+      answer < this.answers.length &&
+      this.answers[answer]++
+    this.displayResults()
+    this.displayResults("string")
+  },
+
+  displayResults(type = "array") {
+    if (type === "array") {
+      console.log(this.answers)
+    } else if (type === "string") {
+      console.log(`Poll results are ${this.answers.join(", ")}`)
+    }
+  },
+
+  //   displayResults(type = []) {
+  //     if (typeof type === "string") {
+  //       const res = []
+  //       for (let i of this.options) {
+  //         res.push(i[0])
+  //       }
+  //       console.log(`Poll results are ${res.join(", ")}`)
+  //     } else {
+  //       console.log(this.options)
+  //     }
+  //   },
+}
+
+document
+  .querySelector(".poll")
+  .addEventListener("click", poll.registerNewAnswer.bind(poll))
+
+poll.displayResults.call({ answers: [5, 2, 3] }, "string")
