@@ -149,3 +149,46 @@ book.apply(swiss, flightData)
 book.call(swiss, ...flightData)
 
 // Call and Apply allow to define the this key word in any function that we want
+
+// Bind
+const bookEW = book.bind(eurowings)
+const bookLH = book.bind(lufthansa)
+const bookLX = book.bind(swiss)
+
+bookEW(23, "Steve Williams")
+
+const bookEW23 = book.bind(eurowings, 23)
+bookEW23("Frimu Daniel")
+bookEW23("Marta Cooper")
+
+// Partial application -> specifying parts of the arguments beforehand. Part of the arguments of the original function are already defined. ex. book.bind(eurowings, 23) 23 is already defined.
+
+// With event listeners
+lufthansa.planes = 300
+lufthansa.buyPlane = function () {
+  console.log(this.planes)
+
+  this.planes++
+  console.log(this.planes)
+}
+
+// In an event function the this key word point at the element which the handler is attached to
+document
+  .querySelector(".buy")
+  .addEventListener("click", lufthansa.buyPlane.bind(lufthansa))
+
+// Partial application example
+const addTax = (rate, value) => value + value * rate
+
+const addVAT = addTax.bind(null, 0.23)
+// Creating a more specific function (addVAT) base on a more general function (addTax)
+
+const addTaxRate = rate => {
+  return value => {
+    return value + value * rate
+  }
+}
+
+const addVAT2 = addTaxRate(0.23)
+console.log(addVAT2(100))
+console.log(addVAT2(23))
