@@ -105,3 +105,47 @@ const greeterHey = greet("Hey")
 greeterHey("Jonas")
 greeterHey("Steven")
 greet("Hello")("Jonas")
+
+// Call and Apply
+const lufthansa = {
+  airline: "Lufthansa",
+  iataCode: "LH",
+  bookings: [],
+  book(flight, name) {
+    console.log(
+      `${name} booked a set on ${this.airline} flight ${this.iataCode}${flight}`
+    )
+    this.bookings.push({ flight: `${this.iataCode}${flight}`, name })
+  },
+}
+
+lufthansa.book(439, "The Rock")
+lufthansa.book(239, "John Smith")
+
+const eurowings = {
+  airline: "Eurowings",
+  iataCode: "EW",
+  bookings: [],
+}
+
+const swiss = {
+  airline: "Swiss",
+  iataCode: "LX",
+  bookings: [],
+}
+
+const book = lufthansa.book
+
+// book(23, "Sarah Williams") // does not work
+
+// Call method
+book.call(eurowings, 23, "Sarah Williams")
+book.call(lufthansa, 288, "Mary Cooper")
+book.call(swiss, 125, "Mary Cooper")
+
+// Apply method
+const flightData = [993, "Sarah Williams"]
+book.apply(swiss, flightData)
+book.call(swiss, ...flightData)
+
+// Call and Apply allow to define the this key word in any function that we want
