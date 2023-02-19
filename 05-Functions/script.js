@@ -97,3 +97,11 @@ transformer("JavaScript is the best!", oneWord)
         2. Allow us to create abstraction. The "transformer" functiono transforms the string but does't care about how should do it.
         We could write all the login in "transformer" but we abstracted the code in other functions (oneWord and upperFirstWord) so we created a new level of abstraction. The "transformer" (Higher-Order) delegates the job of transforming the string to other functions(Lower-Level) functions.
 */
+
+// Returning functions
+const greet = greeting => name => console.log(`${greeting} ${name}`)
+
+const greeterHey = greet("Hey")
+greeterHey("Jonas")
+greeterHey("Steven")
+greet("Hello")("Jonas")
