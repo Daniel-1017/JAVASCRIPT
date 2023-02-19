@@ -1,9 +1,5 @@
 "use strict"
 
-// Data needed for a later exercise
-const flights =
-  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30"
-
 // Data needed for first part of the section\
 const week = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
 
@@ -503,3 +499,35 @@ console.log(`An event happened, on average, every ${lastMin / gameEvents.size}`)
 for (let [min, event] of gameEvents) {
   console.log(`[${min <= 45 ? "FIRST" : "SECOND"} HALF] ${min}: ${event}`)
 }
+
+// Data needed for a later exercise
+const flights =
+  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30"
+
+const airline = "TAP Air Portugal"
+const plane = "A320"
+
+const indexOf = airline.indexOf("T")
+const lastIndexOf = airline.indexOf("P")
+console.log(
+  airline.slice(0, 1),
+  airline.slice(airline.indexOf("T"), airline.indexOf(" ")),
+  airline.slice(-2)
+)
+
+const checkMiddleSet = function (seat) {
+  const s = seat.slice(-1)
+  if (s === "B" || s === "E") {
+    console.log("You got the middle seat.")
+  } else {
+    console.log("You got lucky.")
+  }
+}
+
+checkMiddleSet("11B")
+checkMiddleSet("23C")
+checkMiddleSet("3E")
+
+// JS behind the scenes will convert the string into an object with the same content and with all the methods available. This is called BOXING.
+
+// ex: "11B" -> new String("11B") all the methods are available on the prototype, when the operation is done, the object is converted into a regular string primitive
