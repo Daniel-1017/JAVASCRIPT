@@ -83,6 +83,20 @@ movements.forEach(function (movement, i, arr) {
   }
 })
 
+// Use forEach if you don't need to break out of the loop otherwise use for of loop
+
+console.log("")
+
+// FOR EACH ON MAPS AND SETS
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`)
+})
+
+const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR", "EUR"])
+currenciesUnique.forEach(function (value, _, map) {
+  console.log(`${value}: ${value}`)
+})
+
 console.log("")
 
 /////////////////////////////////////////////////
