@@ -251,6 +251,8 @@ booker()
 
 // A closure is the closed-over variable evironment of the execution context in which a function was created, even after that execution context is gone.
 
+// Closure remembers all the variables of a function at the time of its birth.
+
 // A closure gives a function access to all the variables of its parent function, even after that parent function has returnde. The function keeps a reference to its outre scope, which preserves the scope chain throughout time.
 
 // Closure examples
@@ -291,3 +293,13 @@ const boardPassengers = function (n, wait) {
 
 const perGroup = 1000
 boardPassengers(180, 3)
+
+// Coding challenge
+;(function () {
+  const header = document.querySelector("h1")
+  header.style.color = "#f00"
+
+  document.body.addEventListener("click", function () {
+    header.style.color = "#00f"
+  })
+})()
