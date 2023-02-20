@@ -99,4 +99,14 @@ const max = movements.reduce(
   (acc, mov) => (acc > mov ? acc : mov),
   movements[0]
 )
-console.log(max)
+
+// CHAINING METHODS
+const totalDepositsinUSD = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => {
+    // console.log(arr) inspect the array
+    return mov * eurToUsd
+  })
+  .reduce((acc, mov) => acc + mov, 0)
+
+console.log(totalDepositsinUSD)
