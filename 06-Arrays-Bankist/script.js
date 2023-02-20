@@ -109,3 +109,10 @@ console.log(letters)
 console.log(letters.join(" - "))
 
 // Join does not mutate the original array
+
+const arr3 = [23, 11, 64]
+
+// AT
+console.log(arr3.at(0))
+console.log(arr3.at(-1))
+console.log("jonas".at(-1))
