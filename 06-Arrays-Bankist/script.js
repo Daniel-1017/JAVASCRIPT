@@ -81,6 +81,12 @@ const displayMovements = function (movements) {
 }
 displayMovements(account1.movements)
 
+const calcAndPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0)
+  labelBalance.textContent = `${balance}€`
+}
+calcAndPrintBalance(account1.movements)
+
 const createUsernames = function (accs) {
   accs.forEach(
     acc =>
@@ -92,4 +98,3 @@ const createUsernames = function (accs) {
   )
 }
 createUsernames(accounts)
-console.log(accounts)

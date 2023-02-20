@@ -88,3 +88,15 @@ const deposits = movements.filter(mov => mov > 0)
 
 // Filters elements based on a certain condition
 // Filter does not mutate the original array
+
+// REDUCE
+const balance = movements.reduce((acc, curr) => acc + curr, 0)
+
+// Reduces a array into a single value
+// Reduce does not mutate the original array
+
+const max = movements.reduce(
+  (acc, mov) => (acc > mov ? acc : mov),
+  movements[0]
+)
+console.log(max)
