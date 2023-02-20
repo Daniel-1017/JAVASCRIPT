@@ -228,9 +228,29 @@ document
   .querySelector(".poll")
   .addEventListener("click", poll.registerNewAnswer.bind(poll))
 
-poll.displayResults.call({ answers: [5, 2, 3] }, "string")
-
-;// IIFE (Immediately Invoked Function Expressions)
-(function () {
+poll.displayResults.call({ answers: [5, 2, 3] }, "string") // IIFE (Immediately Invoked Function Expressions)
+;(function () {
   console.log("This will never run again.")
 })()
+
+// Closure
+const secureBooking = function () {
+  let passengers = 0
+
+  return function () {
+    passengers++
+    console.log(passengers)
+  }
+}
+
+const booker = secureBooking()
+
+booker()
+booker()
+booker()
+
+// A closure is the closed-over variable evironment of the execution context in which a function was created, even after that execution context is gone.
+
+// A closure gives a function access to all the variables of its parent function, even after that parent function has returnde. The function keeps a reference to its outre scope, which preserves the scope chain throughout time.
+
+// Closure examples
