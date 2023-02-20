@@ -75,3 +75,10 @@ const arr3 = [23, 11, 64]
 console.log(arr3.at(0))
 console.log(arr3.at(-1))
 console.log("jonas".at(-1))
+
+// MAP
+const eurToUsd = 1.1
+
+const movementsUsd = movements.map(mov => mov * eurToUsd)
+
+// Map does not mutate the original array
