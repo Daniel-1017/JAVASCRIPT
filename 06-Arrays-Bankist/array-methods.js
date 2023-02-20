@@ -82,3 +82,9 @@ const eurToUsd = 1.1
 const movementsUsd = movements.map(mov => mov * eurToUsd)
 
 // Map does not mutate the original array
+
+// FILTER
+const deposits = movements.filter(mov => mov > 0)
+
+// Filters elements based on a certain condition
+// Filter does not mutate the original array
