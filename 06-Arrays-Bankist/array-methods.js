@@ -6,6 +6,21 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
+const account1 = {
+  owner: "Jonas Schmedtmann",
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+}
+
+const account2 = {
+  owner: "Jessica Davis",
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+}
+const accounts = [account1, account2]
+
 /////////////////////////////////////////////////
 
 movements.forEach(function (movement, i, arr) {
@@ -123,3 +138,25 @@ console.log(movements.every(mov => mov > 0))
 const deposit = mov => mov > 0
 console.log(movements.every(deposit))
 console.log(movements.some(deposit))
+
+// FLAT and FLATMAP
+// flat
+const arr4 = [[1, 2, 3], [4, 5, 6], 7, 8]
+const arrDeep = [[1, 2, 3, [6, 9]], [4, 5, 6], 7, 8]
+console.log(arr4.flat())
+console.log(arrDeep.flat(2))
+
+// With flat you can choose how many level deep you want to go ex: flat(2)
+
+const accountMovements = accounts.map(acc => acc.movements)
+const allMovements = accountMovements.flat()
+
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0)
+
+// flatMap
+
+// flatMap goes only 1 level deep
+
+const overallBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0)
