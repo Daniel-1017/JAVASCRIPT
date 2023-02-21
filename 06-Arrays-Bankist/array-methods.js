@@ -109,4 +109,7 @@ const totalDepositsinUSD = movements
   })
   .reduce((acc, mov) => acc + mov, 0)
 
-console.log(totalDepositsinUSD)
+// FIND
+const firstWithdrawal = movements.find(mov => mov < 0)
+
+// Find returns just the first value matching the condition
