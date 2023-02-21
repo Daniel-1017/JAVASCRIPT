@@ -6,21 +6,6 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-const account1 = {
-  owner: "Jonas Schmedtmann",
-  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-  interestRate: 1.2, // %
-  pin: 1111,
-}
-
-const account2 = {
-  owner: "Jessica Davis",
-  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
-  interestRate: 1.5,
-  pin: 2222,
-}
-const accounts = [account1, account2]
-
 /////////////////////////////////////////////////
 
 movements.forEach(function (movement, i, arr) {
@@ -188,3 +173,29 @@ movements.sort((a, b) => b - a)
 console.log(movements)
 
 // Sort does mutate the original array
+
+console.clear()
+
+// More ways to create and fill arrays
+const x = new Array(7) // 7 is the length of the array, use fill method to fill it
+x.fill(1, 3, 5) // content, from, to
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1)
+const z = Array.from({ length: 7 }, (_, i) => i + 1)
+
+// Converting NodeList into array
+document
+  .querySelector(".balance__value")
+  .addEventListener("click", function () {
+    // 1.
+    const movementsUI = Array.from(
+      document.querySelectorAll(".movements__value"),
+      el => Number(el.textContent.replace("€", ""))
+    )
+
+    // 2.
+    const movementsUI2 = [...document.querySelectorAll(".movements__value")]
+  })
+
+// Array methods are not available on NodeLists so we can use Array.from() to convert them to arrays
