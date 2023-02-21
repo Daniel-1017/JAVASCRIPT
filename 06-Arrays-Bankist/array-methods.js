@@ -113,3 +113,13 @@ const totalDepositsinUSD = movements
 const firstWithdrawal = movements.find(mov => mov < 0)
 
 // Find returns just the first value matching the condition
+
+// SOME and EVERY
+const anyDeposits = movements.some(mov => mov > 1500)
+
+console.log(movements.every(mov => mov > 0))
+
+// Separate callback
+const deposit = mov => mov > 0
+console.log(movements.every(deposit))
+console.log(movements.some(deposit))
