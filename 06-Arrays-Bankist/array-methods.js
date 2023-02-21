@@ -160,3 +160,31 @@ const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0)
 const overallBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0)
+
+// Sorting arrays
+const owners = ["Jonas", "Zach", "Adam", "Martha"]
+console.log(owners.sort())
+
+// Ascending
+// return < 0 A, B
+// return > 0 B, A
+movements.sort((a, b) => {
+  if (a > b) return 1
+  if (b > a) return -1
+})
+
+movements.sort((a, b) => a - b)
+
+console.log(movements)
+
+// Descending
+movements.sort((a, b) => {
+  if (a > b) return -1
+  if (b > a) return 1
+})
+
+movements.sort((a, b) => b - a)
+
+console.log(movements)
+
+// Sort does mutate the original array
