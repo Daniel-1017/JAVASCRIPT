@@ -283,8 +283,12 @@ const isEven = n => n % 2 === 0
 console.log(isEven(8))
 console.log(isEven(23))
 
-document.body.addEventListener("click", function () {
-  ;[...document.querySelectorAll(".movements__row")].forEach(function (row, i) {
-    if (i % 2 === 0) row.style.backgroundColor = "orangered"
-  })
-})
+// document.body.addEventListener("click", function () {
+//   ;[...document.querySelectorAll(".movements__row")].forEach(function (row, i) {
+//     if (i % 2 === 0) row.style.backgroundColor = "orangered"
+//   })
+// })
+
+// Numeric separators
+const sunDiameter = 287_460_000_000
+const price = 453_99
