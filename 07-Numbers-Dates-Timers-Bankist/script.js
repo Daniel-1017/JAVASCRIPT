@@ -292,3 +292,25 @@ console.log(isEven(23))
 // Numeric separators
 const sunDiameter = 287_460_000_000
 const price = 453_99
+
+console.log(Number("23_51")) // Wrong (NaN)
+
+// BigInt
+console.log(3462953265623987520235408946n)
+console.log(BigInt(3462953265623987520235408946))
+
+// Operations
+console.log(235602935603256923034n * 9075609875423085302457n)
+
+console.log(typeof 20n)
+console.log(typeof 20)
+
+console.log(20n > 10)
+
+// Division
+console.log(12n / 3n)
+console.log(8n / 3n)
+// It will cut the decimal part
+
+// Can't mix BigInt with normal numbers
+// Math operation does not work with big int Math.sqrt(16n) WRONG
