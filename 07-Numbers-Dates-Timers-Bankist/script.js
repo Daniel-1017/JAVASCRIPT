@@ -274,3 +274,17 @@ console.log(Math.floor(10.4))
 console.log((2.7).toFixed(0))
 console.log((2.7).toFixed(3))
 console.log((2.4598).toFixed(2))
+
+// Reminder
+console.log(5 % 2)
+console.log(8 % 3)
+
+const isEven = n => n % 2 === 0
+console.log(isEven(8))
+console.log(isEven(23))
+
+document.body.addEventListener("click", function () {
+  ;[...document.querySelectorAll(".movements__row")].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = "orangered"
+  })
+})
