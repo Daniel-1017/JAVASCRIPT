@@ -212,3 +212,26 @@ btnSort.addEventListener("click", function (e) {
   displayMovements(currentAccount.movements, !sorted)
   sorted = !sorted
 })
+
+// ---------------------------------
+// Converting
+console.log(Number("10"))
+console.log(+"10")
+
+// Parsing
+console.log(Number.parseInt("30px", 10))
+console.log(Number.parseFloat("2.5px"))
+
+// Check if value is NaN
+console.log(Number.isNaN("20"))
+console.log(Number.isNaN(+"20X"))
+console.log(Number.isNaN(20 / 0))
+
+// Check if value is number
+console.log(Number.isFinite(20))
+console.log(Number.isFinite("20"))
+console.log(Number.isFinite(20 / 0))
+
+console.log(Number.isInteger(20))
+console.log(Number.isInteger("20"))
+console.log(Number.isInteger(20 / 0))
