@@ -86,3 +86,37 @@ btnScrollTo.addEventListener("click", function (e) {
 
   section1.scrollIntoView({ behavior: "smooth" })
 })
+
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min)
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`
+
+document.querySelector(".nav__link").addEventListener("click", function (e) {
+  this.style.backgroundColor = randomColor()
+  console.log("Link", e.target, e.currentTarget)
+
+  // Stop propagation
+  // Generally not a good idea
+  // e.stopPropagation()
+})
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  this.style.backgroundColor = randomColor()
+  console.log("Nav", e.target, e.currentTarget)
+})
+
+document.querySelector(".nav").addEventListener("click", function (e) {
+  console.log("container", e.target, e.currentTarget)
+  this.style.backgroundColor = randomColor()
+
+  // e.currentTarget === this
+})
+
+// e.target is where the event originated, is not the element on which the event is attached
+
+// all of these evenets are recieving the same event because of event bubbling
+
+// e.currentTarget is the element on which the event is attached
+
+// Event handler function are listening to click events that happen to the element itself and for event the bubble up from their child elements

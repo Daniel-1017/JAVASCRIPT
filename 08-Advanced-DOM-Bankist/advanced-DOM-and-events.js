@@ -57,8 +57,6 @@ logo.classList.contains("fake-class-name")
 // This will overwrite old classes
 // logo.className = "Jonas"
 
-console.clear()
-
 // Type of events and event handlers
 const h1 = document.querySelector("h1")
 
