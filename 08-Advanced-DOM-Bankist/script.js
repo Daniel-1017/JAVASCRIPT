@@ -56,6 +56,7 @@ document
     // message.parentElement.removeChild(message)
   })
 
+// Button scrolling
 const btnScrollTo = document.querySelector(".btn--scroll-to")
 const section1 = document.querySelector("#section--1")
 
@@ -87,36 +88,30 @@ btnScrollTo.addEventListener("click", function (e) {
   section1.scrollIntoView({ behavior: "smooth" })
 })
 
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min)
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`
+// Page navigation
 
-document.querySelector(".nav__link").addEventListener("click", function (e) {
-  this.style.backgroundColor = randomColor()
-  console.log("Link", e.target, e.currentTarget)
+// good but not excellent way, not good when you have to attach the event to more links. ex: 100 links
 
-  // Stop propagation
-  // Generally not a good idea
-  // e.stopPropagation()
-})
+// document.querySelectorAll(".nav__link").forEach(function (el) {
+//   el.addEventListener("click", function (e) {
+//     e.preventDefault()
+
+//     const id = this.getAttribute("href")
+
+//     document.querySelector(id).scrollIntoView({ behavior: "smooth" })
+//   })
+// })
+
+// better way to do it using event delegation
+// 1. Add event listener to common parent element
+// 2. Determinate what element originated the event
 
 document.querySelector(".nav__links").addEventListener("click", function (e) {
-  this.style.backgroundColor = randomColor()
-  console.log("Nav", e.target, e.currentTarget)
+  e.preventDefault()
+
+  // Matching strategy
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href")
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" })
+  }
 })
-
-document.querySelector(".nav").addEventListener("click", function (e) {
-  console.log("container", e.target, e.currentTarget)
-  this.style.backgroundColor = randomColor()
-
-  // e.currentTarget === this
-})
-
-// e.target is where the event originated, is not the element on which the event is attached
-
-// all of these evenets are recieving the same event because of event bubbling
-
-// e.currentTarget is the element on which the event is attached
-
-// Event handler function are listening to click events that happen to the element itself and for event the bubble up from their child elements

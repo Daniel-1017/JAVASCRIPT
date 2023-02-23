@@ -61,16 +61,50 @@ logo.classList.contains("fake-class-name")
 const h1 = document.querySelector("h1")
 
 // addEventListener allows us to add more event listeners and remove them if we don't need them any more
-const alertH1 = function (e) {
-  alert("addEventListener: Great! You are reading the heading :D")
+// const alertH1 = function (e) {
+//   alert("addEventListener: Great! You are reading the heading :D")
 
-  h1.removeEventListener("mouseenter", alertH1)
-}
+//   h1.removeEventListener("mouseenter", alertH1)
+// }
 
-h1.addEventListener("mouseenter", alertH1)
+// h1.addEventListener("mouseenter", alertH1)
 
 // OLD WAY
 // If we specify more events, the previous ones will be overwritten
 // h1.onmouseenter = function (e) {
 //   alert("addEventListener: Great! You are reading the heading :D")
 // }
+
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min)
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`
+
+document.querySelector(".nav__link").addEventListener("click", function (e) {
+  this.style.backgroundColor = randomColor()
+  console.log("Link", e.target, e.currentTarget)
+
+  // Stop propagation
+  // Generally not a good idea
+  // e.stopPropagation()
+})
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  this.style.backgroundColor = randomColor()
+  console.log("Nav", e.target, e.currentTarget)
+})
+
+document.querySelector(".nav").addEventListener("click", function (e) {
+  console.log("container", e.target, e.currentTarget)
+  this.style.backgroundColor = randomColor()
+
+  // e.currentTarget === this
+})
+
+// e.target is where the event originated, is not the element on which the event is attached
+
+// all of these evenets are recieving the same event because of event bubbling
+
+// e.currentTarget is the element on which the event is attached
+
+// Event handler function are listening to click events that happen to the element itself and for event the bubble up from their child elements
