@@ -56,3 +56,23 @@ logo.classList.contains("fake-class-name")
 
 // This will overwrite old classes
 // logo.className = "Jonas"
+
+console.clear()
+
+// Type of events and event handlers
+const h1 = document.querySelector("h1")
+
+// addEventListener allows us to add more event listeners and remove them if we don't need them any more
+const alertH1 = function (e) {
+  alert("addEventListener: Great! You are reading the heading :D")
+
+  h1.removeEventListener("mouseenter", alertH1)
+}
+
+h1.addEventListener("mouseenter", alertH1)
+
+// OLD WAY
+// If we specify more events, the previous ones will be overwritten
+// h1.onmouseenter = function (e) {
+//   alert("addEventListener: Great! You are reading the heading :D")
+// }
