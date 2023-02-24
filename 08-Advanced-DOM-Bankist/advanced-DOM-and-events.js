@@ -108,3 +108,28 @@ document.querySelector(".nav").addEventListener("click", function (e) {
 // e.currentTarget is the element on which the event is attached
 
 // Event handler function are listening to click events that happen to the element itself and for event the bubble up from their child elements
+
+// Traversing the DOM
+const H1 = document.querySelector("h1")
+console.log(H1.querySelectorAll(".highlight"))
+console.log(H1.childNodes) // NodeList, gives everyting
+console.log(H1.children) // HTLMCollection, gives only direct child
+
+// H1.firstElementChild.style.color = "white"
+// H1.lastElementChild.style.color = "orangered"
+
+// Going upwards: parent
+console.log(h1.parentNode)
+console.log(h1.parentElement)
+
+// h1.closest(".header").style.background = "var(--gradient-secondary)"
+// .closest(".header") returns the closest element with that class
+
+// Going sideways: siblings
+console.log(H1.previousElementSibling)
+console.log(H1.nextElementSibling)
+
+console.log(H1.parentElement.children)
+;[...H1.parentElement.children].forEach(function (el) {
+  // if (el !== H1) el.style.scale = "0.5"
+})
