@@ -12,6 +12,8 @@ const nav = document.querySelector(".nav")
 const tabs = document.querySelectorAll(".operations__tab")
 const tabsContainer = document.querySelector(".operations__tab-container")
 const tabsContent = document.querySelectorAll(".operations__content")
+const btnScrollTo = document.querySelector(".btn--scroll-to")
+const section1 = document.querySelector("#section--1")
 
 const openModal = function (e) {
   e.preventDefault()
@@ -61,9 +63,6 @@ document
   })
 
 // Button scrolling
-const btnScrollTo = document.querySelector(".btn--scroll-to")
-const section1 = document.querySelector("#section--1")
-
 btnScrollTo.addEventListener("click", function (e) {
   const s1Coords = section1.getBoundingClientRect()
 
@@ -159,5 +158,12 @@ const handleHover = function (e) {
 // We could use mouseenter but mouseenter doesn't bubble up
 // Passing "argument" into handler
 nav.addEventListener("mouseover", handleHover.bind(0.5))
-
 nav.addEventListener("mouseout", handleHover.bind(1))
+
+// Sticky navigation
+// BAD PERFORMANCE
+const initialCoords = section1.getBoundingClientRect()
+window.addEventListener("scroll", function (e) {
+  if (window.scrollY > initialCoords.top) nav.classList.add("sticky")
+  else nav.classList.remove("sticky")
+})
