@@ -4,7 +4,7 @@ console.log(document.head)
 console.log(document.body)
 
 document.querySelector(".header")
-const allSections = document.querySelectorAll(".section")
+// const allSections = document.querySelectorAll(".section")
 document.getElementById("section--1")
 const allButtons = document.getElementsByTagName("button")
 // getElementsByTagName returns a HTMLCollection that updates every time we delete a element belonging to that collection
@@ -138,9 +138,9 @@ console.clear()
 
 // Sticky navigation: Intersection Observer API
 const obsCallback = function (entries, observer) {
-  entries.forEach(entry => {
-    console.log(entry)
-  })
+  // entries.forEach(entry => {
+  //   console.log(entry)
+  // })
 }
 
 const obsOptions = {
@@ -152,3 +152,20 @@ const observer = new IntersectionObserver(obsCallback, obsOptions)
 observer.observe(section1)
 
 // The cbFunction will get called each time that the observe element is intersecting the root element at the threshold that we defined
+
+// Lifecycle DOM events
+document.addEventListener("DOMContentLoaded", function (e) {
+  console.log("HTML parsed and DOM tree built.", e)
+})
+
+window.addEventListener("load", function (e) {
+  console.log("Page Fully loaded", e)
+  // load event will fire when it's doen downloading all external resources and css filess
+})
+
+/* window.addEventListener("beforeunload", function (e) {
+  e.preventDefault()
+  console.log(e)
+  e.returnValue = ""
+  // beforeunload will fire before user left the page
+}) */
