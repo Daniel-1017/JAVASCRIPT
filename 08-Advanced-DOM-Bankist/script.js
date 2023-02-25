@@ -162,8 +162,24 @@ nav.addEventListener("mouseout", handleHover.bind(1))
 
 // Sticky navigation
 // BAD PERFORMANCE
-const initialCoords = section1.getBoundingClientRect()
+/* const initialCoords = section1.getBoundingClientRect()
 window.addEventListener("scroll", function (e) {
   if (window.scrollY > initialCoords.top) nav.classList.add("sticky")
   else nav.classList.remove("sticky")
+}) */
+
+// Sticky navigation: Intersection Observer API
+const navHeight = nav.getBoundingClientRect().height
+
+const stickyNav = function (entries) {
+  const [entry] = entries
+  if (!entry.isIntersecting) nav.classList.add("sticky")
+  else nav.classList.remove("sticky")
+}
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
 })
+headerObserver.observe(header)

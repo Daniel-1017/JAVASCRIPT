@@ -133,3 +133,22 @@ console.log(H1.parentElement.children)
 ;[...H1.parentElement.children].forEach(function (el) {
   // if (el !== H1) el.style.scale = "0.5"
 })
+
+console.clear()
+
+// Sticky navigation: Intersection Observer API
+const obsCallback = function (entries, observer) {
+  entries.forEach(entry => {
+    console.log(entry)
+  })
+}
+
+const obsOptions = {
+  root: null,
+  threshold: [0, 0.2],
+}
+
+const observer = new IntersectionObserver(obsCallback, obsOptions)
+observer.observe(section1)
+
+// The cbFunction will get called each time that the observe element is intersecting the root element at the threshold that we defined
