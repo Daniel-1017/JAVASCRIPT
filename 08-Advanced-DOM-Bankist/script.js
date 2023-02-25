@@ -204,3 +204,28 @@ allSections.forEach(function (section) {
   sectionObserver.observe(section)
   section.classList.add("section--hidden")
 })
+
+// Lazy loading images
+const imgTargets = document.querySelectorAll("img[data-src]")
+
+const loadImg = function (entries, observer) {
+  const [entry] = entries
+
+  if (!entry.isIntersecting) return
+
+  // Replace src with data-src
+  entry.target.src = entry.target.dataset.src
+  entry.target.addEventListener("load", function () {
+    // We use the load event to remove the blur when js finishes downloading the image. If we don't use it, we would remove the blur too early and we would see the old low resolution image
+    entry.target.classList.remove("lazy-img")
+  })
+  observer.unobserve(entry.target)
+}
+
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: "200px",
+})
+
+imgTargets.forEach(img => imgObserver.observe(img))
