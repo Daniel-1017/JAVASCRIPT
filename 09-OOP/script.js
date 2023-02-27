@@ -16,8 +16,10 @@ const Person = function (firstName, birthYear) {
   */
 }
 
+// Instances
 const jonas = new Person("Jonas", 1991)
 const jack = new Person("Jack", 2005)
+console.log("%c--- instances ---", "color: #28b487")
 console.log(jonas, jack)
 
 /* 
@@ -27,6 +29,19 @@ console.log(jonas, jack)
 4. Function automatically return {}
 */
 
+// Prototypes
+console.log("%c\n--- prototypes ---", "color: #28b487")
+
+/*
+BETTER WAY TO CREATE A METHOD
+now there exists only one copy and every object created with this constructor function can use it on them selves
+*/
+Person.prototype.calcAge = function () {
+  console.log(this.firstName + "'s age", 2037 - this.birthYear)
+}
+
+jack.calcAge()
+
 // instanceof
-console.log("%c--- instanceof ---", "color: #28b487")
+console.log("%c\n--- instanceof ---", "color: #28b487")
 console.log("jack is a instanceof on Person", jack instanceof Person)
