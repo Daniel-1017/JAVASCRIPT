@@ -114,8 +114,8 @@ bmw.brake()
 console.log("%c\n--- ES6 classes ---", "color: #28b487")
 
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName
+  constructor(fullName, birthYear) {
+    this.fullName = fullName
     this.birthYear = birthYear
   }
 
@@ -123,13 +123,49 @@ class PersonCl {
   calcAge() {
     console.log(2037 - this.birthYear)
   }
+
+  get age() {
+    return 2037 - this.birthYear
+  }
+
+  // Set a property that already exists
+  set fullName(name) {
+    if (name.includes(" ")) this._fullName = name
+    else alert(`${name} is not a full name!`)
+  }
+
+  get fullName() {
+    return this._fullName
+  }
 }
 
-const jessica = new PersonCl("Jessica", 1988)
+const jessica = new PersonCl("Jessica Davis", 1988)
 jessica.calcAge()
+console.log(jessica.age)
 
 /* 
 1. Classes are NOT hoisted
 2. Classes are first-class citizens
 3. Cleasses are executed in strics mode
 */
+
+// Getters and Setters
+const walter = new PersonCl("Walter White", 1995)
+
+const account = {
+  owner: "Jonas",
+  movements: [215, 305, 530, 100, 260],
+
+  get latest() {
+    return this.movements.pop()
+  },
+
+  set latest(mov) {
+    this.movements.push(mov)
+  },
+}
+
+console.log(account.latest)
+
+account.latest = 50
+console.log(account.movements)
