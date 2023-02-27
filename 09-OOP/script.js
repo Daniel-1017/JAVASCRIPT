@@ -75,6 +75,7 @@ console.log([1, 1, 1, 12, 2, 2, 2, 2, 4, 6, 7, 8, 8, 8, 8, 8].unique())
 
 // Thst's why we can call methods on functions, they are objects and objects have prototypes
 
+// Challenge
 console.log("%c\n--- challenge 1 ---", "color: #28b487")
 /* 
 1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
@@ -108,3 +109,27 @@ bmw.accelerate()
 bmw.brake()
 bmw.accelerate()
 bmw.brake()
+
+// ES6 Classes
+console.log("%c\n--- ES6 classes ---", "color: #28b487")
+
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName
+    this.birthYear = birthYear
+  }
+
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear)
+  }
+}
+
+const jessica = new PersonCl("Jessica", 1988)
+jessica.calcAge()
+
+/* 
+1. Classes are NOT hoisted
+2. Classes are first-class citizens
+3. Cleasses are executed in strics mode
+*/
