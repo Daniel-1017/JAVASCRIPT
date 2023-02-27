@@ -188,3 +188,22 @@ console.log(account.movements)
 Static methods
 they are not called on the instance but on the constructor function */
 PersonCl.hey()
+
+// Object.create()
+console.log("%c\n--- Object.create() ---", "color: #28b487")
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear)
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName
+    this.birthYear = birthYear
+  },
+}
+
+const steven = Object.create(PersonProto)
+steven.init("Steven", 2003)
+steven.calcAge()
+
+// Object.create creates a new object and the prototype of that object is the object that we passed in
