@@ -29,6 +29,13 @@ console.log(jonas, jack)
 4. Function automatically return {}
 */
 
+// Static methods
+Person.hey = function () {
+  console.log("Hey there 👋")
+}
+
+Person.hey()
+
 // Prototypes
 console.log("%c\n--- prototypes ---", "color: #28b487")
 
@@ -119,7 +126,9 @@ class PersonCl {
     this.birthYear = birthYear
   }
 
-  // Methods will be added to .prototype property
+  /* 
+  Instance methods
+  Methods will be added to .prototype property */
   calcAge() {
     console.log(2037 - this.birthYear)
   }
@@ -136,6 +145,11 @@ class PersonCl {
 
   get fullName() {
     return this._fullName
+  }
+
+  // Static method
+  static hey() {
+    console.log("Hey there 👋")
   }
 }
 
@@ -169,3 +183,8 @@ console.log(account.latest)
 
 account.latest = 50
 console.log(account.movements)
+
+/* 
+Static methods
+they are not called on the instance but on the constructor function */
+PersonCl.hey()
