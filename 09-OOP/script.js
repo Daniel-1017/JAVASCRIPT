@@ -253,3 +253,38 @@ ford.accelerate()
 ford.brake()
 ford.speedUS = 50
 console.log(ford)
+
+console.clear()
+
+// Inheritance between classes: Constructor Functions
+console.log(
+  "%c\n--- Inheritance between classes: Constructor Functions ---",
+  "color: #28b487"
+)
+
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear)
+  this.course = course
+}
+
+// We want to set Student.prototype to Person.prototype, we do so by assigning Object.create(Person.prototype) to Student.prototype
+
+// Linking prototypes
+Student.prototype = Object.create(Person.prototype)
+
+/* 
+WRONG
+Student.prototype = Person.prototype
+
+We are telling JS that the student's prototype and the person's prototype should be the exact same object, which is wrong
+*/
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`)
+}
+
+const mike = new Student("Mike", 2020, "Computer Science")
+mike.introduce()
+mike.calcAge()
+
+Student.prototype.constructor = Student
