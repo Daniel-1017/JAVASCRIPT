@@ -385,49 +385,59 @@ tesla.brake()
 console.log(tesla)
 
 // Class example
-console.log("%c\n--- class example ---", "color: #28b487")
+console.log("%c\n--- encapsulation ---", "color: #28b487")
 
 class Account {
+  // Fields and propertie are AVAILABLE ON INSTANCES
+
+  // Public fields
+  locale = navigator.language
+
+  // Private fields
+  #movements = []
+  #pin
+
   constructor(owner, currency, pin) {
     this.owner = owner
     this.currency = currency
 
     // Protected property
-    this._pin = pin
-    this._movements = []
+    this.#pin = pin
+    // this._movements = []
 
-    this.locale = navigator.language
+    // this.locale = navigator.language
 
     console.log(`Thanks for opening an account, ${owner}`)
   }
 
+  // METHODS ARE AVAILABLE ON THE PROTOTYPE
   // Public interface of Public API of our objects
   getMovements() {
-    return this._movements
+    return this.#movements
   }
 
   deposit(val) {
-    this._movements.push(val)
+    this.#movements.push(val)
   }
 
   withdraw(val) {
     this.deposit(-val)
   }
 
-  _approveLoan(val) {
-    return true
-  }
-
   reqLoan(val) {
-    if (this._approveLoan(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(val)
       console.log("Loan approved")
     }
   }
+
+  // Private methdos
+  #approveLoan(val) {
+    return true
+  }
 }
 
 const acc1 = new Account("Jonas", "EUR", 1111)
-console.log(acc1.getMovements())
 
 /* 
 BAD IDEA, USE THE PUBLIC INTERFACE INSTEAD
