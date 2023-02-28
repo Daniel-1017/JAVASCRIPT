@@ -234,6 +234,7 @@ class CarCl {
   brake() {
     this.speed -= 5
     console.log(`${this.make} is goind at ${this.speed} km/h`)
+    return this
   }
 
   get speedUS() {
@@ -453,3 +454,53 @@ console.log("%c\n--- chaining methods ---", "color: #28b487")
 acc1.deposit(100).deposit(500).withdraw(35).reqLoan(25000).withdraw(4000)
 
 console.log(acc1.getMovements())
+
+// Challenge
+console.log("%c--- challenge ---", "color: #28b487")
+
+/* 
+1. Re-create challenge #3, but this time using ES6 classes: create an 'EVCl' child class of the 'CarCl' class
+2. Make the 'charge' property private;
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery' methods of this class, and also update the 'brake' method in the 'CarCl' class. They experiment with chining!
+DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
+GOOD LUCK 😀
+*/
+
+class EVCl extends CarCl {
+  #batteryCharge
+
+  constructor(make, speed, batteryCharge) {
+    super(make, speed)
+    this.#batteryCharge = batteryCharge
+  }
+
+  chargeBattery(chargeTo) {
+    this.#batteryCharge = chargeTo
+    return this
+  }
+
+  accelerate() {
+    this.speed += 20
+    this.#batteryCharge--
+    console.log(
+      `${this.make} going at ${this.speed} km/h, with a charge of ${
+        this.#batteryCharge
+      }%`
+    )
+    return this
+  }
+}
+
+const rivian = new EVCl("Rivian", 50, 20)
+rivian
+  .accelerate()
+  .accelerate()
+  .brake()
+  .chargeBattery(50)
+  .accelerate()
+  .accelerate()
+  .brake()
+  .brake()
+console.log(rivian.speedUS)
+
+// THE PUBLIC API ALLOWS US TO MANIPULATE PROPERTIES FROM THE OUTSIDE BUT WITHOUT BEING ABLE TO ACCESS IT FROM THE OUTSIDE
