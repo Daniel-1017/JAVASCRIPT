@@ -271,6 +271,7 @@ const Student = function (firstName, birthYear, course) {
 
 // Linking prototypes
 Student.prototype = Object.create(Person.prototype)
+// Object.create will create a new object with prototype = Person.prototype and assign in to Student.prototype
 
 /* 
 WRONG
@@ -288,3 +289,44 @@ mike.introduce()
 mike.calcAge()
 
 Student.prototype.constructor = Student
+
+// Challenge
+console.log("%c\n--- challenge ---", "color: #28b487")
+
+/* 
+1. Use a constructor function to implement an Electric Car (called EV) as a CHILD "class" of Car. Besides a make and current speed, the EV also has the current battery charge in % ('charge' property);
+2. Implement a 'chargeBattery' method which takes an argument 'chargeTo' and sets the battery charge to 'chargeTo';
+3. Implement an 'accelerate' method that will increase the car's speed by 20, and decrease the charge by 1%. Then log a message like this: 'Tesla going at 140 km/h, with a charge of 22%';
+4. Create an electric car object and experiment with calling 'accelerate', 'brake' and 'chargeBattery' (charge to 90%). Notice what happens when you 'accelerate'! HINT: Review the definiton of polymorphism 😉
+DATA CAR 1: 'Tesla' going at 120 km/h, with a charge of 23%
+GOOD LUCK 😀
+*/
+
+const EV = function (make, speed, batteryCharge) {
+  Car.call(this, make, speed)
+  this.batteryCharge = batteryCharge
+}
+
+EV.prototype = Object.create(Car.prototype)
+EV.prototype.constructor = EV
+
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.batteryCharge = chargeTo
+}
+
+EV.prototype.accelerate = function () {
+  this.speed += 20
+  this.batteryCharge--
+  console.log(
+    `${this.make} going at ${this.speed} km/h, with a charge of ${this.batteryCharge}%`
+  )
+}
+
+const tesla = new EV("Tesla", 100, 22)
+tesla.chargeBattery(66)
+tesla.accelerate()
+tesla.brake()
+tesla.accelerate()
+tesla.accelerate()
+tesla.brake()
+console.log(tesla)
