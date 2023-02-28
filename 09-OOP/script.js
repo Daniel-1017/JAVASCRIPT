@@ -418,16 +418,19 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val)
+    return this
   }
 
   withdraw(val) {
     this.deposit(-val)
+    return this
   }
 
   reqLoan(val) {
     if (this.#approveLoan(val)) {
       this.deposit(val)
       console.log("Loan approved")
+      return this
     }
   }
 
@@ -444,3 +447,9 @@ BAD IDEA, USE THE PUBLIC INTERFACE INSTEAD
 acc1.movements.push(100)
 acc1.movements.push(-230)
 */
+
+// Chaining methods
+console.log("%c\n--- chaining methods ---", "color: #28b487")
+acc1.deposit(100).deposit(500).withdraw(35).reqLoan(25000).withdraw(4000)
+
+console.log(acc1.getMovements())
