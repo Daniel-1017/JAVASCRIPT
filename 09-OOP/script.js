@@ -290,6 +290,38 @@ mike.calcAge()
 
 Student.prototype.constructor = Student
 
+// Inheritance between classes: Classes
+console.log(
+  "%c\n--- Inheritance between classes: Classes ---",
+  "color: #28b487"
+)
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // super is the constructor function of the parent class. Always nees to happen first!
+    super(fullName, birthYear)
+    this.course = course
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`)
+  }
+
+  calcAge() {
+    console.log(
+      `I'm ${
+        2037 - this.birthYear
+      } years old, but as a student I fell more like ${
+        2037 - this.birthYear + 10
+      }`
+    )
+  }
+}
+
+const marta = new StudentCl("Marta Jones", 2012, "Computer Science")
+marta.introduce()
+marta.calcAge()
+
 // Challenge
 console.log("%c\n--- challenge ---", "color: #28b487")
 
