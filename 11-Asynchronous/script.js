@@ -95,19 +95,28 @@ When we already have a promise. E.g. promise returned from Fetch API. But before
 E.g. fetch("https://restcountries.com/v2/name/portugal")
 */
 
+const getJSON = (url, errorMsg = "Something went wrong") => {
+  return fetch(url).then(res => {
+    if (!res.ok) throw new Error(`${errorMsg} (${res.status})`)
+    return res.json()
+  })
+}
+
 const getCountryDataWithFetch = country => {
   // Flat chain of promises
   // Country 1
-  fetch(`https://restcountries.com/v2/name/${country}`)
-    .then(res => res.json())
+  getJSON(`https://restcountries.com/v2/name/${country}`, "Country not found")
     .then(([data]) => {
       renderCountry(data)
       const neighbour = data.borders?.[0]
 
-      if (!neighbour) return
+      if (!neighbour) throw new Error("No neighbour found")
 
       // Country 2
-      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`)
+      return getJSON(
+        `https://restcountries.com/v2/alpha/${neighbour}`,
+        "Country not found"
+      )
       // By returning this promise, then the fulfilled value of the next method will be the fulfilled value of this previeous promese
 
       /* 
@@ -119,7 +128,6 @@ const getCountryDataWithFetch = country => {
       This will work but we are back to callback hell
       */
     })
-    .then(res => res.json())
     .then(data => renderCountry(data, "neighbour"))
     .catch(err => {
       console.error(`${err} 💥💥💥💥💥`)
@@ -131,3 +139,5 @@ const getCountryDataWithFetch = country => {
 btn.addEventListener("click", () => {
   getCountryDataWithFetch("portugal")
 })
+
+getCountryDataWithFetch("australia")
