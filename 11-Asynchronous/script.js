@@ -40,6 +40,7 @@ const getCountryData = country => {
 
 // AJAX call country 1
 const getCountryAndNeighbour = country => {
+  // Callback Hell
   const request = new XMLHttpRequest()
   request.open("GET", `https://restcountries.com/v2/name/${country}`)
   request.send()
@@ -90,9 +91,31 @@ E.g. fetch("https://restcountries.com/v2/name/portugal")
 */
 
 const getCountryDataWithFetch = country => {
+  // Flat chain of promises
+  // Country 1
   fetch(`https://restcountries.com/v2/name/${country}`)
     .then(res => res.json())
-    .then(([data]) => renderCountry(data))
+    .then(([data]) => {
+      renderCountry(data)
+      const neighbour = data.borders?.[0]
+
+      if (!neighbour) return
+
+      // Country 2
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`)
+      // By returning this promise, then the fulfilled value of the next method will be the fulfilled value of this previeous promese
+
+      /* 
+      WRONG
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`)
+      .then(res => res.json())
+      .then(data => renderCountry(data, "neighbour"))
+
+      This will work but we are back to callback hell
+      */
+    })
+    .then(res => res.json())
+    .then(data => renderCountry(data, "neighbour"))
 }
 
-getCountryDataWithFetch("portugal")
+getCountryDataWithFetch("italy")
