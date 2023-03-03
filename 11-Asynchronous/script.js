@@ -85,7 +85,14 @@ A promise is only sattled once, so from there the state will remain unchanged fo
 
 CONSUME A PROMISE
 When we already have a promise. E.g. promise returned from Fetch API. But before it needs to be build. E.g. Fetch API returns promise.
+
+E.g. fetch("https://restcountries.com/v2/name/portugal")
 */
 
-const request = fetch(`https://restcountries.com/v2/name/portugal`)
-console.log(request)
+const getCountryDataWithFetch = country => {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then(res => res.json())
+    .then(([data]) => renderCountry(data))
+}
+
+getCountryDataWithFetch("portugal")
