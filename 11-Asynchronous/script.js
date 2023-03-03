@@ -26,6 +26,7 @@ const renderCountry = (data, className = "") => {
   countriesContainer.style.opacity = 1
 }
 
+// XMLHttpRequests
 const getCountryData = country => {
   const request = new XMLHttpRequest()
   request.open("GET", `https://restcountries.com/v2/name/${country}`)
@@ -65,4 +66,26 @@ const getCountryAndNeighbour = country => {
   })
 }
 
-getCountryAndNeighbour("bolivia")
+// Promises and Fetch API
+
+/* 
+A Promise is an object used as a placeholder for the future result of an asynchronous operation.
+
+Advantages:
+    1. No need to rely on events and callbacks
+    2. Instead of nesting callbacks, we can chain promises
+
+Promise life-cycle
+    1. PENDING (before the future value is available)
+    2. SATTLED (asynchronous task has finished)
+        - FULFILLED (success! the value is now available)
+        - REJECTED (an error happened)
+
+A promise is only sattled once, so from there the state will remain unchanged forever
+
+CONSUME A PROMISE
+When we already have a promise. E.g. promise returned from Fetch API. But before it needs to be build. E.g. Fetch API returns promise.
+*/
+
+const request = fetch(`https://restcountries.com/v2/name/portugal`)
+console.log(request)
