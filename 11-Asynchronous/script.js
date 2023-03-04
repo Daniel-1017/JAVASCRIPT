@@ -185,3 +185,11 @@ whereAmI(52.508, 13.381)
 whereAmI(19.037, 72.873)
 whereAmI(-33.933, 18.474)
 */
+
+// Event loop
+console.log("%c--- event loop ---", "color: #28b487")
+
+console.log("Test start") // 1 to finish
+setTimeout(() => console.log("0 sec timer"), 0) // 4 to finish
+Promise.resolve("Resolved promise 1").then(console.log) // 3 to finish
+console.log("Test end") // 2 to finish
