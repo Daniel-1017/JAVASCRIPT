@@ -313,6 +313,7 @@ const createImage = imagePath => {
 
 let currentImg
 
+  /* 
 createImage("img/img-1.jpg")
   .then(img => {
     currentImg = img
@@ -330,8 +331,9 @@ createImage("img/img-1.jpg")
     currentImg.style.display = "none"
   })
   .catch(console.error)
+ */
 
-// Async / Await
+  // Async / Await
 ;(() => {
   // whereAmI 3.0
   const whereAmI = async () => {
@@ -383,3 +385,31 @@ createImage("img/img-1.jpg")
     }
   })()
 })()
+
+const get3Countries = async (c1, c2, c3) => {
+  try {
+    /* 
+    const [data1] = await getJSON(`https://restcountries.com/v2/name/${c1}`)
+    const [data2] = await getJSON(`https://restcountries.com/v2/name/${c2}`)
+    const [data3] = await getJSON(`https://restcountries.com/v2/name/${c3}`)
+    */
+
+    // Promise.all combinator
+    const data = await Promise.all([
+      getJSON(`https://restcountries.com/v2/name/${c1}`),
+      getJSON(`https://restcountries.com/v2/name/${c2}`),
+      getJSON(`https://restcountries.com/v2/name/${c3}`),
+    ])
+
+    /* 
+    When 1 rejects then the whole Promise.all rejects aswll
+    Promise.all shortcircuits when 1 promise rejects
+    When you have multiple operation at the same time and operation that don't depent on one another then you should always run them in parallel with Promise.all
+    */
+    console.log(data.flat().map(d => d.capital))
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+get3Countries("portugal", "tanzania", "moldova")
