@@ -187,9 +187,47 @@ whereAmI(-33.933, 18.474)
 */
 
 // Event loop
+/* 
 console.log("%c--- event loop ---", "color: #28b487")
-
+ 
 console.log("Test start") // 1 to finish
 setTimeout(() => console.log("0 sec timer"), 0) // 4 to finish
 Promise.resolve("Resolved promise 1").then(console.log) // 3 to finish
 console.log("Test end") // 2 to finish
+*/
+
+// Building promises
+// the Promise contructor take in jusn one argument which is the executor function
+const lotteryPromise = new Promise((resolve, reject) => {
+  console.log("Lottery draw began 🔮")
+  setTimeout(() => {
+    if (Math.random() >= 0.5) {
+      resolve("You WIN 💰") // promise fulfilled
+    } else {
+      reject(new Error("You lost your money")) // promise rejected
+    }
+  }, 2000)
+})
+
+lotteryPromise.then(console.log).catch(console.error)
+
+// PROMISIFYING
+// means to convert callback based asynchronous behavior to promise based.
+
+// Promisifying setTimeout
+const wait = seconds => {
+  return new Promise(resolve => {
+    setTimeout(resolve, seconds * 1000)
+  })
+}
+
+wait(2)
+  .then(() => {
+    console.log("I waited for 2 seconds")
+    return wait(1)
+  })
+  .then(() => console.log("I waited for 1 second"))
+
+// Create a fulfilled or rejected promise, this is resolved or rejecterd immediately
+Promise.resolve("abc fulfilled").then(console.log)
+Promise.reject(new Error("Problem!")).then(console.error)
