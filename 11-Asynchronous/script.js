@@ -136,9 +136,11 @@ const getCountryDataWithFetch = country => {
     .finally(() => (countriesContainer.style.opacity = 1))
 }
 
+/* 
 btn.addEventListener("click", () => {
   getCountryDataWithFetch("portugal")
 })
+ */
 
 /* 
 Challenge 1
@@ -164,21 +166,23 @@ GOOD LUCK 😀
 // user website https://apidocs.geoapify.com/
 // default url 'https://api.geoapify.com/v1/geocode/reverse?lat=52.51894887928074&lon=13.409808180753316&format=json&apiKey=YOUR_API_KEY'
 
+/* 
 const whereAmI = (lat, lng) => {
   // prettier-ignore
   fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&format=json&apiKey=9c0924a22160435f9613fddb7a8ccc8f
   `)
-    .then(res => {
-        if (!res.ok) throw new Error(`Problem with geocoding (${res.status})`)
-
-        return res.json()
-    })
-    .then(({results}) => {
-        const {city, country} = results[0]
-        console.log(`You are in ${city}, ${country}`);
-        getCountryDataWithFetch(country)
-    }).catch(err => console.error(err))
+  .then(res => {
+    if (!res.ok) throw new Error(`Problem with geocoding (${res.status})`)
+    
+    return res.json()
+  })
+  .then(({results}) => {
+    const {city, country} = results[0]
+    console.log(`You are in ${city}, ${country}`);
+    getCountryDataWithFetch(country)
+  }).catch(err => console.error(err))
 }
+*/
 
 /* 
 whereAmI(52.508, 13.381)
@@ -231,3 +235,44 @@ wait(2)
 // Create a fulfilled or rejected promise, this is resolved or rejecterd immediately
 Promise.resolve("abc fulfilled").then(console.log)
 Promise.reject(new Error("Problem!")).then(console.error)
+
+// Promisifying the Geolocation API
+const getPosition = () => {
+  return new Promise((resolve, reject) => {
+    /* Method 1 
+      navigator.geolocation.getCurrentPosition(
+      position => resolve(position),
+      err => reject(err)
+    ) */
+
+    // Method 2
+    navigator.geolocation.getCurrentPosition(resolve, reject)
+  })
+}
+
+getPosition().then(console.log)
+
+// whereAmI 2.0
+const whereAmI = () => {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords
+
+      // prettier-ignore
+      return fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&format=json&apiKey=9c0924a22160435f9613fddb7a8ccc8f
+  `)
+    })
+    .then(res => {
+      if (!res.ok) throw new Error(`Problem with geocoding (${res.status})`)
+
+      return res.json()
+    })
+    .then(({ results }) => {
+      const { city, country } = results[0]
+      console.log(`You are in ${city}, ${country}`)
+      getCountryDataWithFetch(country)
+    })
+    .catch(err => console.error(err))
+}
+
+btn.addEventListener("click", whereAmI)
