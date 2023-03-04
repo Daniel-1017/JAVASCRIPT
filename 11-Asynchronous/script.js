@@ -335,24 +335,35 @@ createImage("img/img-1.jpg")
 ;(() => {
   // whereAmI 3.0
   const whereAmI = async () => {
-    // Geolocation
-    const pos = await getPosition()
-    const { latitude: lat, longitude: lng } = pos.coords
+    try {
+      // Geolocation
+      const pos = await getPosition()
+      const { latitude: lat, longitude: lng } = pos.coords
 
-    // Reverse geocoding
-    // prettier-ignore
-    const resGeo = await fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&format=json&apiKey=9c0924a22160435f9613fddb7a8ccc8f
+      // Reverse geocoding
+      // prettier-ignore
+      const resGeo = await fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&format=json&apiKey=9c0924a22160435f9613fddb7a8ccc8f
     `)
-    const dataGeo = await resGeo.json()
 
-    // Country data
-    const res = await fetch(
-      `https://restcountries.com/v2/name/${dataGeo.results[0].country}`
-    )
-    const data = await res.json()
-    renderCountry(data[0])
+      if (!resGeo.ok) throw new Error("Problem getting location data.")
+
+      const dataGeo = await resGeo.json()
+
+      // Country data
+      const res = await fetch(
+        `https://restcountries.com/v2/name/${dataGeo.results[0].country}`
+      )
+
+      if (!res.ok) throw new Error("Problem getting contry data.")
+
+      const data = await res.json()
+      renderCountry(data[0])
+    } catch (err) {
+      console.error(`${err} 💥💥💥`)
+      renderError(`Something went wrong 💥 ${err.message}`)
+    }
   }
 
-  whereAmI("portugal")
+  whereAmI()
   console.log("FIRST")
 })()
