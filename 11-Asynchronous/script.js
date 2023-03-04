@@ -23,12 +23,12 @@ const renderCountry = (data, className = "") => {
     </article>
     `
   countriesContainer.insertAdjacentHTML("beforeend", html)
-  // countriesContainer.style.opacity = 1
+  countriesContainer.style.opacity = 1
 }
 
 const renderError = msg => {
   countriesContainer.insertAdjacentText("beforeend", msg)
-  // countriesContainer.style.opacity = 1
+  countriesContainer.style.opacity = 1
 }
 
 // XMLHttpRequests
@@ -260,7 +260,7 @@ const whereAmI = () => {
 
       // prettier-ignore
       return fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&format=json&apiKey=9c0924a22160435f9613fddb7a8ccc8f
-  `)
+      `)
     })
     .then(res => {
       if (!res.ok) throw new Error(`Problem with geocoding (${res.status})`)
@@ -330,3 +330,29 @@ createImage("img/img-1.jpg")
     currentImg.style.display = "none"
   })
   .catch(console.error)
+
+// Async / Await
+;(() => {
+  // whereAmI 3.0
+  const whereAmI = async () => {
+    // Geolocation
+    const pos = await getPosition()
+    const { latitude: lat, longitude: lng } = pos.coords
+
+    // Reverse geocoding
+    // prettier-ignore
+    const resGeo = await fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&format=json&apiKey=9c0924a22160435f9613fddb7a8ccc8f
+    `)
+    const dataGeo = await resGeo.json()
+
+    // Country data
+    const res = await fetch(
+      `https://restcountries.com/v2/name/${dataGeo.results[0].country}`
+    )
+    const data = await res.json()
+    renderCountry(data[0])
+  }
+
+  whereAmI("portugal")
+  console.log("FIRST")
+})()
