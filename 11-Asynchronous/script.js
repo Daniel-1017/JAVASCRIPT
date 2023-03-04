@@ -413,3 +413,50 @@ const get3Countries = async (c1, c2, c3) => {
 }
 
 get3Countries("portugal", "tanzania", "moldova")
+
+// Promise.rece
+;(async () => {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.com/v2/name/japan`),
+    getJSON(`https://restcountries.com/v2/name/egypt`),
+    getJSON(`https://restcountries.com/v2/name/mexico`),
+  ])
+  console.log(res[0])
+  /* 
+  Promise.race returns the one who finishes first NOT all of them
+  A promise who is rejected can also win the race
+  Promise.race shortcircuits whnever one of the promises gets settled even if it is rejected
+  */
+})()
+
+const timeout = s => {
+  return new Promise((_, rej) => {
+    setTimeout(() => {
+      rej(new Error("Request took too long."))
+    }, s * 1000)
+  })
+}
+
+Promise.race([
+  getJSON(`https://restcountries.com/v2/name/tanzania`),
+  timeout(0.2),
+])
+  .then(data => console.log(data[0]))
+  .catch(console.error)
+
+// Promise.allSettled ES2020
+Promise.allSettled([
+  Promise.resolve("Success"),
+  Promise.reject("Error"),
+  Promise.resolve("Success"),
+]).then(res => console.log(res))
+// Promise.allSettled never shortcircuits
+
+// Promise.any ES2021
+Promise.any([
+  Promise.resolve("Success"),
+  Promise.reject("Error"),
+  Promise.resolve("Success"),
+]).then(res => console.log(res))
+// Returns the first fullfilled promise unless all of them reject
+// REJECTED PROMISES ARE IGNORED
