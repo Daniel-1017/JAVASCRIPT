@@ -358,12 +358,28 @@ createImage("img/img-1.jpg")
 
       const data = await res.json()
       renderCountry(data[0])
+
+      return `You are if ${dataGeo.results[0].city}, ${dataGeo.results[0].country}`
     } catch (err) {
       console.error(`${err} 💥💥💥`)
       renderError(`Something went wrong 💥 ${err.message}`)
+
+      // Reject promise returned from async function
+      throw err
     }
   }
 
+  /* 
   whereAmI()
-  console.log("FIRST")
+  .then(city => console.log(city))
+  .catch(err => console.log(err))
+  */
+
+  ;(async () => {
+    try {
+      const city = await whereAmI()
+    } catch (err) {
+      console.log(err)
+    }
+  })()
 })()
