@@ -28,3 +28,4 @@ export default (product, quantity) => {
   cart.push(product)
   console.log(`${quantity} ${product} added to the cart.`)
 }
+
