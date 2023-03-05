@@ -76,7 +76,7 @@ const ShoppingCart2 = (() => {
     return {addToCart, cart, totalPrice, totalQuantity}
 })()
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js'
+import cloneDeep from 'lodash-es'
 const state = {
     cart: [
         {product: 'bread', quantity: 5},
@@ -92,3 +92,7 @@ state.user.loggedIn = false
 
 console.log(stateClone);
 console.log(stateDeepClone);
+
+if (module.hot) {
+    module.hot.accept()
+}

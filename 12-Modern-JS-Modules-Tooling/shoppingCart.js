@@ -21,7 +21,7 @@ export const addToCart = (product, quantity) => {
 const totalPrice = 237
 const totalQuantity = 23
 
-export { totalPrice, totalQuantity as qty }
+export { totalPrice as price, totalQuantity as qty }
 
 // Default exports
 export default (product, quantity) => {
