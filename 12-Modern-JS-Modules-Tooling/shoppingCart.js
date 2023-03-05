@@ -1,5 +1,14 @@
 // Exporting module
 
+// Blocking code
+/* 
+    console.log("%c--- Start fetching users ---", "color: #28b487")
+    await fetch("https://jsonplaceholder.typicode.com/users")
+    console.log("%c--- Finish fetching users ---", "color: #28b487")
+
+    The importing module will wait for this code to finish
+*/
+
 // Variables are scoped to this module
 const shippingCost = 10
 const cart = []
