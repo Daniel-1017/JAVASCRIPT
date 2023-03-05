@@ -93,6 +93,28 @@ state.user.loggedIn = false
 console.log(stateClone);
 console.log(stateDeepClone);
 
+// Configuring babel
 if (module.hot) {
     module.hot.accept()
 }
+
+class Person {
+    #greeting = "hey"
+    constructor(name) {
+        this.name = name
+        console.log(`${this.#greeting} ${this.name}`);
+    }
+}
+
+const jonas = new Person("Jonas")
+
+console.log("Jonas" ?? null);
+
+ShoppingCart.addToCart("bread", 5)
+ShoppingCart.addToCart("apple", 1)
+console.log(ShoppingCart.cart.find(el => el.quantity >= 2));
+
+import "core-js/stable"
+
+// Polyfilling async functions
+import "regenerator-runtime/runtime"
