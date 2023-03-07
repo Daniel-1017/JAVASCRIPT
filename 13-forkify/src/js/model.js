@@ -1,16 +1,16 @@
-import { API_URL } from "./config"
-import { getJSON } from "./helpers"
+import { API_URL } from "./config";
+import { getJSON } from "./helpers";
 
 export const state = {
   recipe: {},
-}
+};
 
 export const loadRecipe = async id => {
   try {
     // prettier-ignore
     const data = await getJSON(`${API_URL}/${id}`)
 
-    const { recipe } = data.data
+    const { recipe } = data.data;
     state.recipe = {
       id: recipe.id,
       title: recipe.title,
@@ -20,8 +20,8 @@ export const loadRecipe = async id => {
       servings: recipe.servings,
       cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
-    }
+    };
   } catch (err) {
-    console.error(err.message, "💥💥💥")
+    console.error(err.message, "💥💥💥");
   }
-}
+};
